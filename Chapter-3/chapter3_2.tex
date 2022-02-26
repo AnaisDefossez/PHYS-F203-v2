@@ -291,7 +291,7 @@ Application. La vitesse de groupe est la vitesse à laquelle on peut envoyer de 
 
 \subsection{Propagation et étalement d'un paquet d'onde gaussien.}
 
-Dans la section précédente nous avons négligé le terme $i\omega'' (k-k_0)^2 t$ dans l'exponentientielle de l'équation \eqref{eq:Axt}. Pour des temps longs, ce terme ne peut pas être négligé. Il va donner lieu à un étalement du paquet d'onde. Ce phénomène peut être mis en évidence dans un cas ou l'intégrale sur $k$ peut  être faite exactement, le paquet d'onde gaussien.
+Dans la section précédente nous avons négligé le terme $i\omega'' (k-k_0)^2 t$ dans l'exponentientielle de l'équation \eqref{eq:Axt}. Pour des temps longs, ce terme ne peut pas être négligé. Il va donner lieu à un étalement du paquet d'onde. Ce phénomène peut être mis en évidence dans un cas où l'intégrale sur $k$ peut  être faite exactement, le paquet d'onde gaussien.
 
 Rappelons d'abord quelques intégrales.
 \begin{equation}
@@ -316,17 +316,48 @@ A COMPLETER ET CORRIGER A PARTIR DICI
 
 **********
 
-Un paquet d'onde \textbf{gaussien} s'écrit comme :
+En effet, nous avons vu précédemment qu'un paquet d'onde à 1D pouvait s'écrire sous la forme : 
 \begin{equation}
-\psi(x, t) = \dfrac{\sqrt{a}}{\left(2\pi\right) ^{3/4}} \int_{-\infty} ^{+\infty} \d k \; \exp \left[-\dfrac{a^2}{4} (k-k_0)^2\right] \; \exp\left[i \left(kx - \dfrac{\hbar k^2}{2m}t\right)\right]
+  \psi(x,t) = \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^{+ \infty} g(k) \exp \left[ -i\omega(k)t + ikx \right] dk
 \end{equation}
-que nous allons évaluer en utilisant [...]. Après évaluation de l'intégrale, on trouve une expression de $\psi$ qui est encore une gaussienne, comme quoi la transformée de Fourier d'une gaussienne est bel et bien encore une gaussienne, mais la largeur trouvée est dépendante du temps :
+où l'on a $\omega(k) = \frac{\hbar k^2}{2m}$ \\
+Un paquet d'onde \textbf{gaussien} est alors un paquet d'onde dans lequel $g(k)$ est une gaussienne centrée en $k_0$ :
+\begin{equation}
+\psi(x, t) = \dfrac{\sqrt{a}}{\left(2\pi\right) ^{3/4}} \int_{-\infty} ^{+\infty} dk \; \exp \left[-\dfrac{a^2}{4} (k-k_0)^2\right] \; \exp\left[i \left(kx - \dfrac{\hbar k^2}{2m}t\right)\right]
+\label{eq:paquetgauss1D}
+\end{equation}
+Nous allons l'évaluer en regroupant les termes de l'exponentielle de l'intégrande en $k^2$ et en $k$, comme suit : 
+\begin{itemize}
+  \item $\alpha = \frac{a^2}{4} + \frac{i\hbar}{2m}t$
+  \item $\beta = \frac{a^2}{2}k_0 + ix$
+\end{itemize}
+de sorte que (\ref{eq:paquetgauss1D}) puisse s'écrire sous la forme : 
+\begin{equation}
+  \psi(x,t) : \frac{\sqrt{a}}{(2\pi)^{3/4}} e^{-\frac{a^2}{4}k_0} \int_{- \infty}^{+\infty} e^{-\alpha^2k^2 + \beta k} dk
+\end{equation}
+En remarquant que cette expression a la forme donnée en (\ref{eq:gaussianInt}), et après quelques manipulations algébriques, nous obtenons finalement : 
+\begin{equation}
+  \psi(x,t) : \left( \frac{2a^2}{\pi} \right)^{1/4} \frac{e^{i\varphi}}{(a^4 + \frac{4\hbar^2 t^2}{m^2})^{1/4}} e^{ik_0 x} \exp \left( - \frac{(x- \frac{\hbar k_0}{m}t)^2}{a^2 + \frac{i2\hbar t}{m}} \right)
+\end{equation}
+où $e^{\varphi}$ n'est rien d'autre qu'une phase (dans lequel l'on a regroupé des termes qui ne dépendent pas de x ou t) qui ne joue aucun rôle important dans l'expression de la fonction d'onde étant donné que l'on peut toujours considérer un état à une phase près. 
+Par ailleurs, on peut voir qu'après évaluation de l'intégrale, on trouve une expression de $\psi$ qui est encore une gaussienne, comme quoi la transformée de Fourier d'une gaussienne est bel et bien encore une gaussienne. \\
+La densité de probabilité de la particule à l'instant $t$ vaut alors : 
+\begin{equation}
+  \left| \psi(x,t) \right| ^2 = \sqrt{\frac{2}{\pi a^2}} \left( 1 + \frac{4\hbar^2}{m^2 a^4}t^2 \right) ^{-1/2} \exp \left( \frac{-2a^2 (x-\frac{\hbar k_0 t}{m})^2}{a^4 + \frac{4\hbar^2 t^2}{m^2}} \right)
+\end{equation}
+Or puisque la largeur d'une gaussienne du type $e^{-(x - x_0)^2/b^2}$ est définie par $\Delta x = \frac{b}{\sqrt{2}}$, on trouve pour la particule la largeur suivante : 
 \begin{equation}
 \Delta x = \dfrac{a}{2} \sqrt{ 1 + \dfrac{4 \hbar ^2 t^2}{m^2 a^4}}
 \end{equation}
-ce qui montre que la dispersion spatiale dépend du temps. En revanche, celle sur l'impulsion est donnée par $$\Delta p = \hbar \Delta k$$, où $\Delta k$ est la largeur de la gaussienne $g(k-k_0)$ donnée par $|g(k,t=0)|^2$ qui est la même qu'en tout temps parce que $$g(k,t) = e^{-i\omega t} g(k,0)$$ ce qui implique la conservation du module à travers le temps. Autrement dit, la largeur de la gaussienne, 
+ce qui montre que la dispersion spatiale dépend du temps. En revanche, celle sur l'impulsion moyenne ($p = \hbar k_0$) est donnée par $$\Delta p = \hbar \Delta k,$$ où $\Delta k$ est la largeur de la gaussienne $g(k-k_0)$ donnée par $|g(k,t=0)|^2$ qui est la même qu'en tout temps parce que $$g(k,t) = e^{-i\omega t} g(k,0)$$ 
+Ceci implique la conservation du module à travers le temps ; autrement dit, la largeur de la gaussienne, 
 $$\Delta k = |g(k,t=0)|^2 = \dfrac{1}{a}$$
-est constante : il n'y a donc pas d'étalement sur l'impulsion.
+est constante : il n'y a donc pas d'étalement sur l'impulsion au cours du temps puisqu'alors $\Delta p = \frac{\hbar}{a}$.
+Remarquons que ceci est effectivement en accord avec l'inégalité de Heisenberg : 
+\begin{itemize}
+  \item en $t=0$, $\Delta x \Delta p = \frac{\hbar}{2}$ ; 
+  \item $\forall t \ne 0, \sqrt{1 + \frac{4\hbar^2 t^2}{m^2 a^4}} \ge 1$ donc nécessairement $\Delta x \Delta p \ge \frac{\hbar}{2}$. 
+\end{itemize}
 
 
 
