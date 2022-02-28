@@ -362,17 +362,23 @@ Remarquons que ceci est effectivement en accord avec l'inégalité de Heisenberg
 
 
 \section{Equation de Schrödinger en potentiel stationnaire}
-Reprenons la forme standard de l'équation de Schrödinger, en supposant cette fois que le \textbf{potentiel ne dépend pas du temps}. Nous obtenons l'équation \eqref{eq:schrodinger_stationnaire}, où le potentiel est dit \textbf{stationnaire}. 
+Reprenons la forme standard de l'équation de Schrödinger, en supposant cette fois que le \textbf{potentiel ne dépend pas du temps} (\textit{i.e} $V(\vec{r}, t) = V(\vec{r})$). Nous obtenons l'équation \eqref{eq:schrodinger_stationnaire}, où le potentiel est dit \textbf{stationnaire}. 
 \begin{equation} \label{eq:schrodinger_stationnaire}
-i\hbar \dfrac{\partial}{\partial t} \psi = -\dfrac{\hbar ^2}{2m} \Delta \psi + V(\vec r, t) \psi
+i\hbar \dfrac{\partial}{\partial t} \psi = -\dfrac{\hbar ^2}{2m} \Delta \psi + V(\vec r) \psi
 \end{equation}
-Résolvons-la par la méthode de séparation des variables. Montrons en effet qu'il existe $\varphi(\vec x)$ et $\chi(t)$ tels que $$\psi(\vec r, t) = \varphi(\vec x) \chi(t)\; .$$
-
-En écrivant l'équation différentielle \eqref{eq:schrodinger_stationnaire} avec ce changement de fonctions, nous pouvons arriver à la forme suivante, séparant les parties temporelle et spatiale :
+A priori, comme l'équation de Schrödinger est une équation \textbf{aux dérivées partielles}, cela peut paraître compliqué à résoudre. 
+Cependant, il est possible de se ramener à la résolution d'une simple équation différentielle ordinaire linéaire (EDOL) pour la partie temporelle, grâce à la méthode de séparation des variables ; autrement dit nous allons supposer qu'il existe $\varphi(\vec x)$ et $\chi(t)$ tels que $$\psi(\vec r, t) = \varphi(\vec x) \chi(t)\; ,$$
+En effet, de cette manière on peut voir que l'on arrive à la forme suivante, séparant les parties temporelle et spatiale :
 \begin{equation}
 i\hbar \dfrac{1}{\chi(t)} \; \dfrac{d}{dt} \chi(t) \; = \; \dfrac{1}{\varphi(\vec r)} \left[ -\dfrac{\hbar ^2}{2m} \; \Delta \varphi(\vec r) \right] + V(\vec r)
+\label{eq:schrodinger_stationnaire_2}
 \end{equation}
-L'équation \eqref{eq:schrodinger_stationnaire} sépare les variables temporelle et spatiale, de telle sorte à les faire égaler obligatoirement une constante pour satisfaire l'égalité. Notons cette constante $\hbar \omega$. 
+De l'équation \eqref{eq:schrodinger_stationnaire_2}, on peut voir que l'on a d'une part dans le membre de gauche une fonction qui ne dépend que de $t$, et d'autre part dans le membre de droite une fonction qui ne dépend que des variables spatiales. \\
+Pour que l'égalité puisse avoir lieu $\forall t$ et $\forall \vec{r}$, il faut que chaque membre de l'équation soit égale à une constante. Nous allons supposer que cette constante vaut $\hbar \omega$. \\
+
+\textit{Remarque : Nous avons fait la supposition que l'on pouvait procéder par la méthode de séparation des variables, mais l'on pourrait se demander si obtenir une solution de cette manière est bien suffisant, et s'il ne serait pas nécessaire de chercher d'autres solutions par d'autres méthodes différentes. 
+En fait, puisque la méthode de séparation des variables revient à résoudre une EDOL, par le théorème de Cauchy (CDI2), la (les) solution(s) (le nombre de solutions indépendantes dépend de l'ordre de l'équation) est (sont) unique(s). Ainsi les solutions obtenues sont bien suffisantes. \\
+Par ailleurs, on remarque aussi que si l'on ne considère qu'une seule dimension spatiale, alors le membre de droite de \eqref{eq:schrodinger_stationnaire_2} se réduit également à une EDOL.}
 \subsection{Résolution de la partie temporelle de l'équation de Schrödinger en potentiel stationnaire}
 Cette étape-ci de la résolution consiste à égaler la partie temporelle de \eqref{eq:schrodinger_stationnaire} à $\hbar \omega$ et à résoudre l'équation différentielle, qui est du premier ordre en le temps. La solution est une exponentielle complexe en le temps.
 
@@ -393,16 +399,19 @@ Il vient ici d'égaler le second membre de \eqref{eq:schrodinger_stationnaire} �
 \end{equation}
 
 
-La constante $\hbar \omega$ correspond bien à l'énergie de la particule. En résolvant \eqref{eq:resol_stat_pos}, cela nous donne la forme d'une solution à l'équation de Schrödinger en potentiel stationnaire.
+La constante $\hbar \omega$ correspond à l'énergie de la particule. En résolvant \eqref{eq:resol_stat_pos}, cela nous donne la forme d'une solution à l'équation de Schrödinger en potentiel stationnaire.
 
 \begin{equation}
-\psi(\vec r, t) = \varphi(\vec r) \; \;  A \;e^{-i\omega t} \quad \text{solution de \eqref{eq:schrodinger_stationnaire}}
+\psi(\vec r, t) = A \; \varphi(\vec r) \; \;e^{-i\omega t} \quad \text{solution de \eqref{eq:schrodinger_stationnaire}}
 \end{equation}
 
 
-Une telle fonction est appelée \textbf{solution stationnaire de l'équation de Schrödinger}, car elle conduit à une densité de probabilité indépendante du temps. On remarque que pour une solution stationnaire, \textbf{une seule pulsation apparaît} : les états d'énergie y sont bien définis. Là où en classique on insiste sur le fait que l'énergie doit bien être conservée, ici on insiste sur le fait que les états d'énergie doivent être bien définis, qu'il existe une énergie bien déterminée. \\
+Une telle fonction est appelée \textbf{solution stationnaire de l'équation de Schrödinger}, car elle conduit à une densité de probabilité indépendante du temps ; en effet, on remarque bien que $\left| \psi(\vec{r}, t) \right|^2 = \left| \phi(\vec{r}) \right|^2$. \\
+On remarque qu'à une solution stationnaire est définie une seule énergie : les états d'énergie y sont bien définis. Là où en classique on insiste sur le fait que l'énergie doit bien être conservée, ici on insiste sur le fait que les états d'énergie doivent être bien définis, qu'il existe une énergie bien déterminée. \\
 
-La résolution de \eqref{eq:resol_stat_pos} dépend de la forme du potentiel. Nous en explorons quelques exemples. Nous pouvons déjà noter que pour faire apparaître des effets quantiques, les potentiels doivent présenter des variations sur des faibles longueurs, typiquement plus faibles que la longueur d'onde des ondes correspondant aux particules en jeu.
+La résolution de \eqref{eq:resol_stat_pos} dépend de la forme du potentiel. Nous en explorons quelques exemples. Nous pouvons déjà noter que pour faire apparaître des effets quantiques, les potentiels doivent présenter des variations sur des faibles longueurs, typiquement plus faibles que la longueur d'onde des particules en jeu associées. En effet, dans ce cas, les longueurs d'onde des particules se "chevauchent" et intéragissent, ce qui donnent lieu aux effets quantiques. \\
+
+\textit{Remarque : A partir de l'équation \eqref{eq:resol_stat_pos}, on peut à nouveau effectuer une séparation des variables (par exemple, en coordonnées sphériques, on pourrait avoir $\varphi(\vec{r}) = R(r) Y^m_l(\theta, \phi)$, où les $Y^m_l(\theta, \phi)$ sont les harmoniques sphériques (choses qui seront vues plus tard, en BA3 notamment), et ainsi se ramener à nouveau à des systèmes d'équations différentielles linéaires.}
 
 
 
